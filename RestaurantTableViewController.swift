@@ -28,6 +28,7 @@ class RestaurantTableViewController: UITableViewController {
                            "Seafood", "American", "American", "Breakfast & Brunch", "Coffee & Tea", "Latin American", "Spanish",
                            "Spanish", "Spanish", "British", "Thai", "Thai"]
     
+    var restaurantIsVisited = Array(repeating: false, count: 21)//21個資料初始都是false，未打勾的狀態
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,6 @@ class RestaurantTableViewController: UITableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return restaurantNames.count
     }
@@ -51,7 +51,11 @@ class RestaurantTableViewController: UITableViewController {
     {
         let cellIdentifier = "Cell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RestaurantTableViewCell
-        //as!強制轉型，讓物件從RestaurantTableViewCell回傳
+        /* 
+        as!強制轉型，讓物件從RestaurantTableViewCell回傳
+        原先是UITableViewCell，但我們要在這使用自訂的Cell，
+        也就是RestaurantTableViewCell。
+         */
 
         //cell呈現的內容
         cell.nameLabel.text = restaurantNames[indexPath.row]
@@ -59,11 +63,69 @@ class RestaurantTableViewController: UITableViewController {
         cell.typeLabel.text = restaurantTypes[indexPath.row]
         cell.thumbnailImageView.image = UIImage(named: restaurantImages[indexPath.row])
         
+        /* 檢查是否有勾選，若為true，則更新輔助示圖(accessory type)為打勾 */
+        if restaurantIsVisited[indexPath.row]{
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
+        
 
         return cell
     }
  
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        tableView.deselectRow(at: indexPath, animated: false)//選取cell時不會卡灰色
+        
+        /* 建立一個選單，preferredStyle: .actionSheet為選單，若使用.alert則為彈框 */
+        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+        
+        /*撥打電話失敗的處理*/
+        let callActionHandler = { (action:UIAlertAction!) -> Void in
+            let alertMessage = UIAlertController(title:"Service Unavailable", message:"Sorry, 打不通, 滾吧！", preferredStyle:.alert)
+            alertMessage.addAction(UIAlertAction(title:"OK", style:.default, handler:nil))
+            self.present(alertMessage, animated: true, completion: nil)
+        }
+        
+        
+        //加入動作Check in
+        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler:
+        {
+            (action:UIAlertAction!)->Void in
+            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
+            cell?.accessoryType = .checkmark//更新該cell的accessoryType，顯示checkmark
+            self.restaurantIsVisited[indexPath.row] = true
+        })
+        //加入動作undo Check in
+        let undoCheckInAction = UIAlertAction(title: "Undo Check in", style: .default, handler:
+        {
+            (action:UIAlertAction!)->Void in
+            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
+            cell?.accessoryType = .none//更新該cell的accessoryType，checkmark消失
+            self.restaurantIsVisited[indexPath.row] = false
+        })
+        //加入動作Call
+        let callAction = UIAlertAction(title: "Call"+" 123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
+        //加入動作cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        optionMenu.addAction(callAction)
+        optionMenu.addAction(cancelAction)
+        
+        /*
+         如果是false的狀態，可以選擇check-in按鈕
+         若已經是選取(true)，則會顯示undo check-in
+         */
+        if restaurantIsVisited[indexPath.row]{
+            optionMenu.addAction(undoCheckInAction)
+        }else{
+            optionMenu.addAction(checkInAction)
+        }
+        
+        //呈現選單
+        present(optionMenu, animated: true, completion: nil)
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -72,7 +134,7 @@ class RestaurantTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -82,7 +144,7 @@ class RestaurantTableViewController: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.
