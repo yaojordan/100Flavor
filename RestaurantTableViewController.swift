@@ -74,58 +74,58 @@ class RestaurantTableViewController: UITableViewController {
         return cell
     }
  
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: false)//選取cell時不會卡灰色
-        
-        /* 建立一個選單，preferredStyle: .actionSheet為選單，若使用.alert則為彈框 */
-        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
-        
-        /*撥打電話失敗的處理*/
-        let callActionHandler = { (action:UIAlertAction!) -> Void in
-            let alertMessage = UIAlertController(title:"Service Unavailable", message:"Sorry, 打不通, 滾吧！", preferredStyle:.alert)
-            alertMessage.addAction(UIAlertAction(title:"OK", style:.default, handler:nil))
-            self.present(alertMessage, animated: true, completion: nil)
-        }
-        
-        
-        //加入動作Check in
-        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler:
-        {
-            (action:UIAlertAction!)->Void in
-            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
-            cell?.accessoryType = .checkmark//更新該cell的accessoryType，顯示checkmark
-            self.restaurantIsVisited[indexPath.row] = true
-        })
-        //加入動作undo Check in
-        let undoCheckInAction = UIAlertAction(title: "Undo Check in", style: .default, handler:
-        {
-            (action:UIAlertAction!)->Void in
-            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
-            cell?.accessoryType = .none//更新該cell的accessoryType，checkmark消失
-            self.restaurantIsVisited[indexPath.row] = false
-        })
-        //加入動作Call
-        let callAction = UIAlertAction(title: "Call"+" 123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
-        //加入動作cancel
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        
-        optionMenu.addAction(callAction)
-        optionMenu.addAction(cancelAction)
-        
-        /*
-         如果是false的狀態，可以選擇check-in按鈕
-         若已經是選取(true)，則會顯示undo check-in
-         */
-        if restaurantIsVisited[indexPath.row]{
-            optionMenu.addAction(undoCheckInAction)
-        }else{
-            optionMenu.addAction(checkInAction)
-        }
-        
-        //呈現選單
-        present(optionMenu, animated: true, completion: nil)
-    }
+//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+//    {
+//        tableView.deselectRow(at: indexPath, animated: false)//選取cell時不會卡灰色
+//        
+//        /* 建立一個選單，preferredStyle: .actionSheet為選單，若使用.alert則為彈框 */
+//        let optionMenu = UIAlertController(title: nil, message: "What do you want to do?", preferredStyle: .actionSheet)
+//        
+//        /*撥打電話失敗的處理*/
+//        let callActionHandler = { (action:UIAlertAction!) -> Void in
+//            let alertMessage = UIAlertController(title:"Service Unavailable", message:"Sorry, 打不通, 滾吧！", preferredStyle:.alert)
+//            alertMessage.addAction(UIAlertAction(title:"OK", style:.default, handler:nil))
+//            self.present(alertMessage, animated: true, completion: nil)
+//        }
+//        
+//        
+//        //加入動作Check in
+//        let checkInAction = UIAlertAction(title: "Check in", style: .default, handler:
+//        {
+//            (action:UIAlertAction!)->Void in
+//            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
+//            cell?.accessoryType = .checkmark//更新該cell的accessoryType，顯示checkmark
+//            self.restaurantIsVisited[indexPath.row] = true
+//        })
+//        //加入動作undo Check in
+//        let undoCheckInAction = UIAlertAction(title: "Undo Check in", style: .default, handler:
+//        {
+//            (action:UIAlertAction!)->Void in
+//            let cell = tableView.cellForRow(at: indexPath)//indexpath取得所選取的cell
+//            cell?.accessoryType = .none//更新該cell的accessoryType，checkmark消失
+//            self.restaurantIsVisited[indexPath.row] = false
+//        })
+//        //加入動作Call
+//        let callAction = UIAlertAction(title: "Call"+" 123-000-\(indexPath.row)", style: .default, handler: callActionHandler)
+//        //加入動作cancel
+//        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//        
+//        optionMenu.addAction(callAction)
+//        optionMenu.addAction(cancelAction)
+//        
+//        /*
+//         如果是false的狀態，可以選擇check-in按鈕
+//         若已經是選取(true)，則會顯示undo check-in
+//         */
+//        if restaurantIsVisited[indexPath.row]{
+//            optionMenu.addAction(undoCheckInAction)
+//        }else{
+//            optionMenu.addAction(checkInAction)
+//        }
+//        
+//        //呈現選單
+//        present(optionMenu, animated: true, completion: nil)
+//    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -134,16 +134,61 @@ class RestaurantTableViewController: UITableViewController {
     }
     */
 
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
+        
+        //社群分享按鈕
+        /*包含自動載入的文字與圖片*/
+        let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
+                                               title: "Share", handler:{(action, indexPath) -> Void in
+            let defaultText = "Just check in at " + self.restaurantNames[indexPath.row]
+            if let imageToShare = UIImage(named: self.restaurantImages[indexPath.row])
+            {
+              let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
+              self.present(activityController, animated: true, completion: nil)
+            }
+        })
+        
+        //刪除按鈕
+        let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
+                                                title: "Delete", handler:{(action, indexPath) -> Void in
+            self.restaurantNames.remove(at: indexPath.row)
+            self.restaurantLocations.remove(at: indexPath.row)
+            self.restaurantTypes.remove(at: indexPath.row)
+            self.restaurantIsVisited.remove(at: indexPath.row)
+            self.restaurantImages.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            /* 利用比較好看的方式刷新表格視圖.fade, .left, .top皆可 */
+        })
+        shareAction.backgroundColor = UIColor.init(red: 48.0/255.0, green: 48.0/255.0, blue: 99.0/255.0, alpha: 1)//亂調的顏色
+        return [deleteAction, shareAction]
+    }
     
-    // Override to support editing the table view.
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        /*檢查segue, 只對showRestaurantDetail這個segue執行*/
+        if segue.identifier == "showRestaurantDetail"{
+            if let indexPath = tableView.indexPathForSelectedRow{
+                let destinationController = segue.destination as! RestaurantDetailViewController
+                destinationController.restaurantImage = restaurantImages[indexPath.row]
+                
+                destinationController.restaurantName = restaurantNames[indexPath.row]
+                destinationController.restaurantLocation = restaurantLocations[indexPath.row]
+                destinationController.restaurantType = restaurantTypes[indexPath.row]
+            }
+        }
+    }
+    
+    
+    /* Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
+        }
+    }*/
     
 
     /*
