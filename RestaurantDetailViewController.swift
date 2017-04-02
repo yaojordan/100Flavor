@@ -12,6 +12,23 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBAction func close(segue:UIStoryboardSegue){
+        //這是用來定義解除segue的方法
+    }
+    @IBAction func ratingButtonTapped(segue: UIStoryboardSegue){
+        if let rating = segue.identifier{
+            
+            restaurant.isVisited = true
+            
+            switch rating {
+            case "great": restaurant.rating = "Absolutely love it, must try!"
+            case "good": restaurant.rating = "Pretty good."
+            case "dislike": restaurant.rating = "I don't like it."
+            default: break
+            }
+        }
+        tableView.reloadData()
+    }
     
 //    @IBOutlet weak var restaurantNameLabel: UILabel!
 //    @IBOutlet weak var restaurantLocationLabel: UILabel!
@@ -33,6 +50,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*啟用自適應cell*/
+        tableView.estimatedRowHeight = 36.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)//very light gray
         tableView.tableFooterView = UIView(frame: CGRect.zero)//透過tableFooterView移除空白列的分隔線
@@ -71,7 +92,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = restaurant.phone
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before" : "No"
+            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(restaurant.rating)" : "No"
+            /*結合評價的內容*/
         default:
             cell.fieldLabel.text = ""
             cell.valueLabel.text = ""
@@ -80,6 +102,13 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         return cell
     }
     
+    /*要把restaurant傳到reviewviewcontroller*/
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showReviewView"{
+                let destinationController = segue.destination as! ReviewViewController
+                destinationController.restaurant = restaurant
+        }
+    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

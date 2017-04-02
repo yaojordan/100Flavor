@@ -13,7 +13,7 @@ class RestaurantTableViewController: UITableViewController {
     //var restaurantIsVisited = Array(repeating: false, count: 21)//21個資料初始都是false，未打勾的狀態
     
     var restaurants:[Restaurant] = [
-        Restaurant(name:"Cafe Deadend", type:"Coffe & Tea", location:"Hong Kong", image:"cafedeadend.jpg", phone:"9487", isVisited: false),
+        Restaurant(name:"Cafe Deadend", type:"Coffe & Tea", location:"Hong Kong 12321314 4444 frgrgrhhhhh 23rwwfefeqgqgrgqgbqr", image:"cafedeadend.jpg", phone:"9487", isVisited: false),
         Restaurant(name:"Homei", type:"Cafe", location:"Hong Kong", image:"homei.jpg", phone:"9487", isVisited: false),
         Restaurant(name:"Teakha", type:"Tea House", location:"Hong Kong", image:"teakha.jpg", phone:"9487", isVisited: false),
         Restaurant(name:"Cafe Loisl", type:"Austrian Drink", location:"Hong Kong", image:"cafeloisl.jpg", phone:"9487", isVisited: false),
@@ -43,6 +43,10 @@ class RestaurantTableViewController: UITableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /*啟用自適應cell，需搭配storyboard的auto layout*/
+        tableView.estimatedRowHeight = 80.0
+        tableView.rowHeight = UITableViewAutomaticDimension
         
         /*移除導覽列的返回按鈕標體*/
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
