@@ -13,8 +13,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        /*改變狀態列的顏色(要先去Info把View controller-based...改成No)*/
+        UIApplication.shared.statusBarStyle = .lightContent
+        
+        /*使用Apple導入的Appearance API設定導覽列的外觀、字體*/
+        UINavigationBar.appearance().barTintColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().tintColor = UIColor.white
+        
+        if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 24.0){
+            UINavigationBar.appearance().titleTextAttributes =
+                [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName:barFont]
+        }
+        
         // Override point for customization after application launch.
         return true
     }
