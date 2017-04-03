@@ -10,6 +10,9 @@ import UIKit
 
 class RestaurantTableViewController: UITableViewController {
     
+    @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){
+        //解除segue
+    }
     //var restaurantIsVisited = Array(repeating: false, count: 21)//21個資料初始都是false，未打勾的狀態
     
     var restaurants:[Restaurant] = [
