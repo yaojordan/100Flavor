@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var restaurant:RestaurantMO!
+    var isVisited = false
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
@@ -24,20 +28,37 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertMessage, animated: true, completion: nil)
         }
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)//為了使用persistentContainer，須取得appdelegate的參照
+        {
+            restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+            restaurant.name = nameTextField.text
+            restaurant.type = typeTextField.text
+            restaurant.location = locationTextField.text
+            restaurant.isVisited = isVisited
+            
+            if let restaurantImage = photoImageView.image{
+                if let imageData = UIImagePNGRepresentation(restaurantImage){
+                    restaurant.image = NSData(data: imageData)//image是NSData型態。取得圖片、轉換為NSData
+                }
+            }
+            appDelegate.saveContext()
+        }
         //dismiss(animated: true, completion: nil)
     }
     @IBAction func toggleBeenHereButton(sender: UIButton){
         if sender == yesButton{
+            isVisited = true
             yesButton.backgroundColor = UIColor.red
             noButton.backgroundColor = UIColor.lightGray
         }else if sender == noButton{
+            isVisited = false
             yesButton.backgroundColor = UIColor.lightGray
             noButton.backgroundColor = UIColor.red
 
         }
     }
 
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +68,7 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
         // Dispose of any resources that can be recreated.
     }
 
-    /*偵測觸控並載入照片庫，第一個cell被選取(row=0)即是照片庫*/
+    /*偵測觸控並載入照片庫，第一個cell被選取(row=0)即是開照片庫*/
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0
         {

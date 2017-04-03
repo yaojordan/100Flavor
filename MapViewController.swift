@@ -13,7 +13,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 
     @IBOutlet var mapView: MKMapView!
     
-    var restaurant:Restaurant!
+    var restaurant:RestaurantMO!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         /*地理編碼器，將地址轉換為座標。並在地圖上標註位置*/
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location, completionHandler: {
+        geoCoder.geocodeAddressString(restaurant.location!, completionHandler: {
             placemarks, error in
             if error != nil{
                 print("error")
@@ -75,7 +75,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         /*圖顯示在泡泡的左邊*/
         let leftIconView = UIImageView(frame: CGRect.init(x: 0, y: 0, width: 53, height: 53))
-        leftIconView.image = UIImage(named: restaurant.image)
+        leftIconView.image = UIImage(data: restaurant.image as! Data)
         annotationView?.leftCalloutAccessoryView = leftIconView
         
         return annotationView

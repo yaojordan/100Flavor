@@ -43,7 +43,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 //    var restaurantLocation = ""
 //    var restaurantType = ""
     
-    var restaurant:Restaurant!
+    var restaurant:RestaurantMO!
     
     override func viewWillAppear(_ animated: Bool) {
         /*滑動效果，顯示導覽列*/
@@ -66,7 +66,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         
         /*地理編碼器，將地址轉換為座標。並在地圖上標註位置*/
         let geoCoder = CLGeocoder()
-        geoCoder.geocodeAddressString(restaurant.location, completionHandler: {
+        geoCoder.geocodeAddressString(restaurant.location!, completionHandler: {
         placemarks, error in
             if error != nil{
                 print("error")
@@ -97,7 +97,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)//分隔線顏色
         
-        restaurantImageView.image = UIImage(named: restaurant.image)
+        restaurantImageView.image = UIImage(data: restaurant.image as! Data)
 //        restaurantNameLabel.text = restaurant.name
 //        restaurantLocationLabel.text = restaurant.location
 //        restaurantTypeLabel.text = restaurant.type

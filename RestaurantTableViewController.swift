@@ -15,29 +15,7 @@ class RestaurantTableViewController: UITableViewController {
     }
     //var restaurantIsVisited = Array(repeating: false, count: 21)//21個資料初始都是false，未打勾的狀態
     
-    var restaurants:[Restaurant] = [
-        Restaurant(name:"Cafe Deadend", type:"Coffe & Tea", location:"G/F, 72 Po Hing Fong, Sheung Wan, Hong Kong", image:"cafedeadend.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Homei", type:"Cafe", location:"Taichung", image:"homei.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Teakha", type:"Tea House", location:"Hong Kong", image:"teakha.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Cafe Loisl", type:"Austrian Drink", location:"Hong Kong", image:"cafeloisl.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Petite Oyster", type:"French", location:"Hong Kong", image:"petiteoyster.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"For Kee Restaurant", type:"Bakery", location:"Hong Kong", image:"forkeerestaurant.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Po's Atelier", type:"Bakery", location:"Hong Kong", image:"posatelier.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Bourke Street Bakery", type:"Bakery", location:"Sydney", image:"bourkestreetbakery.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Haigh's Chocolate", type:"Chocolate", location:"Sydney", image:"haighschocolate.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Palomio Espresso", type:"Cafe", location:"Sydney", image:"palominoespresso.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Upstate", type:"Seafood", location:"524 Ct st, Brooklyn, NY 11231", image:"upstate.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Traif", type:"American", location:"New York", image:"traif.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Graham Avenue Meats", type:"American", location:"New York", image:"grahamavenuemeats.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Waffle & Wolf", type:"Breakfast & Brunch", location:"New York", image:"wafflewolf.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Five Leaves", type:"Coffee & Tea", location:"New York", image:"fiveleaves.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Cafe Lore", type:"Latin American", location:"New York", image:"cafelore.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Confessional", type:"Spanish", location:"New York", image:"confessional.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Barrafina", type:"Spanish", location:"London", image:"barrafina.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Donostia", type:"Spanish", location:"London", image:"donostia.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"Royal Oak", type:"Thai", location:"London", image:"royaloak.jpg", phone:"9487", isVisited: false),
-        Restaurant(name:"CASK Pub and Kitchen", type:"Thai", location:"London", image:"caskpubkitchen.jpg", phone:"9487", isVisited: false),
-                                    ]
+    var restaurants:[RestaurantMO] = []
 
     override func viewWillAppear(_ animated: Bool) {
         /*隱藏導覽列*/
@@ -78,7 +56,7 @@ class RestaurantTableViewController: UITableViewController {
         cell.nameLabel.text = restaurants[indexPath.row].name
         cell.locationLabel.text = restaurants[indexPath.row].location
         cell.typeLabel.text = restaurants[indexPath.row].type
-        cell.thumbnailImageView.image = UIImage(named: restaurants[indexPath.row].image)
+        cell.thumbnailImageView.image = UIImage(data: restaurants[indexPath.row].image as! Data)
         
         /* 檢查是否有勾選，若為true，則更新輔助示圖(accessory type)為打勾 */
         if restaurants[indexPath.row].isVisited{
@@ -157,8 +135,8 @@ class RestaurantTableViewController: UITableViewController {
         /*包含自動載入的文字與圖片*/
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
                                                title: "Share", handler:{(action, indexPath) -> Void in
-            let defaultText = "Just check in at " + self.restaurants[indexPath.row].name
-            if let imageToShare = UIImage(named: self.restaurants[indexPath.row].image)
+            let defaultText = "Just check in at " + self.restaurants[indexPath.row].name!
+            if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image as! Data)
             {
               let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
               self.present(activityController, animated: true, completion: nil)

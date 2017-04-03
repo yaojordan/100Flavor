@@ -15,15 +15,15 @@ class ReviewViewController: UIViewController {
     
     /*圖片設定成與餐廳相同。從detailviewcontroller傳來*/
     @IBOutlet var containerViewImage: UIImageView!
-    var restaurant:Restaurant?
+    var restaurant:RestaurantMO?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         /*圖片設定成與餐廳相同。從detailviewcontroller傳來*/
         if let restaurant = restaurant {
-            containerViewImage.image = UIImage(named: restaurant.image)
-            backgroundImageView.image = UIImage(named: restaurant.image)
+            containerViewImage.image = UIImage(data: restaurant.image as! Data)
+            backgroundImageView.image = UIImage(data: restaurant.image as! Data)
         }
         
         /*背景圖片視覺模糊的效果*/
