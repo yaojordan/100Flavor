@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import MapKit
 
 class RestaurantDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBAction func close(segue:UIStoryboardSegue){
@@ -29,6 +31,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         }
         tableView.reloadData()
     }
+    
     
 //    @IBOutlet weak var restaurantNameLabel: UILabel!
 //    @IBOutlet weak var restaurantLocationLabel: UILabel!
@@ -56,7 +59,42 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         tableView.rowHeight = UITableViewAutomaticDimension
         
         tableView.backgroundColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.2)//very light gray
+        
+        /*取消這個，才能讓地圖顯示出來
         tableView.tableFooterView = UIView(frame: CGRect.zero)//透過tableFooterView移除空白列的分隔線
+         */
+        
+        /*地理編碼器，將地址轉換為座標。並在地圖上標註位置*/
+        let geoCoder = CLGeocoder()
+        geoCoder.geocodeAddressString(restaurant.location, completionHandler: {
+        placemarks, error in
+            if error != nil{
+                print("error")
+                return
+            }
+            
+            if let placemarks = placemarks{
+                //取得第一個地標
+                let placemark = placemarks[0]
+                
+                //加上標註
+                let annotation = MKPointAnnotation()
+                
+                if let location = placemark.location{
+                    //顯示標註
+                    annotation.coordinate = location.coordinate
+                    self.mapView.addAnnotation(annotation)
+                    
+                    //設定縮放
+                    let region = MKCoordinateRegionMakeWithDistance(annotation.coordinate, 1000, 1000)//半徑1000m的範圍
+                    self.mapView.setRegion(region, animated: false)
+                }
+            }
+        })
+        /*偵測點擊手勢，呼叫target的方法是showMap*/
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(showMap))
+        mapView.addGestureRecognizer(tapGestureRecognizer)
+        
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)//分隔線顏色
         
         restaurantImageView.image = UIImage(named: restaurant.image)
@@ -65,6 +103,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 //        restaurantTypeLabel.text = restaurant.type
     }
 
+    func showMap(){
+        performSegue(withIdentifier: "showMap", sender: self)
+        /*showMap方法的實作*/
+    }
+    
     /* 
      實作UITableViewDataSource協定中必要的方法來填入餐廳資訊，回傳4列餐廳資訊
      依照課本練習增加一列phone，共5列
@@ -102,11 +145,17 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         return cell
     }
     
-    /*要把restaurant傳到reviewviewcontroller*/
+    /*要把restaurant傳到reviewviewcontroller，或是mapviewcontroller*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "showReviewView"{
+        if segue.identifier == "showReviewView"
+        {
                 let destinationController = segue.destination as! ReviewViewController
                 destinationController.restaurant = restaurant
+        }
+        else if segue.identifier == "showMap"
+        {
+            let destinationController = segue.destination as! MapViewController
+            destinationController.restaurant = restaurant
         }
     }
     
@@ -115,14 +164,5 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         // Dispose of any resources that can be recreated.
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }
