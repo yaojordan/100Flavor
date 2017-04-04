@@ -9,14 +9,15 @@
 import UIKit
 
 class ReviewViewController: UIViewController {
-
+    
+    var restaurant:RestaurantMO?//coredata
+    
     @IBOutlet var backgroundImageView: UIImageView!
     @IBOutlet var containerView: UIView!
     
     /*圖片設定成與餐廳相同。從detailviewcontroller傳來*/
     @IBOutlet var containerViewImage: UIImageView!
-    var restaurant:RestaurantMO?//coredata
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -10,7 +10,9 @@ import UIKit
 import MapKit
 
 class RestaurantDetailViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
+    var restaurant:RestaurantMO!//coredata
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -36,25 +38,14 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         tableView.reloadData()
     }
     
-    
-//    @IBOutlet weak var restaurantNameLabel: UILabel!
-//    @IBOutlet weak var restaurantLocationLabel: UILabel!
-//    @IBOutlet weak var restaurantTypeLabel: UILabel!
-    
-    //接收傳過來的資料
-//    var restaurantImage = ""
-//    var restaurantName = ""
-//    var restaurantLocation = ""
-//    var restaurantType = ""
-    
-    var restaurant:RestaurantMO!//coredata
-    
+
     override func viewWillAppear(_ animated: Bool) {
         /*滑動效果，顯示導覽列*/
         super.viewWillAppear(animated)
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,9 +93,6 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         tableView.separatorColor = UIColor(red: 240.0/255.0, green: 240.0/255.0, blue: 240.0/255.0, alpha: 0.8)//分隔線顏色
         
         restaurantImageView.image = UIImage(data: restaurant.image as! Data)
-//        restaurantNameLabel.text = restaurant.name
-//        restaurantLocationLabel.text = restaurant.location
-//        restaurantTypeLabel.text = restaurant.type
     }
 
     func showMap(){
@@ -112,10 +100,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         /*showMap方法的實作*/
     }
     
-    /* 
-     實作UITableViewDataSource協定中必要的方法來填入餐廳資訊，回傳4列餐廳資訊
-     依照課本練習增加一列phone，共5列
-     */
+    /* 實作UITableViewDataSource協定中必要的方法來填入餐廳資訊，回傳5列餐廳資訊 */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 5
@@ -163,10 +148,11 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 }

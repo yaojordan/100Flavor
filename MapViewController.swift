@@ -10,10 +10,10 @@ import UIKit
 import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
-
-    @IBOutlet var mapView: MKMapView!
     
     var restaurant:RestaurantMO!//coredata
+    
+    @IBOutlet var mapView: MKMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,12 +81,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         return annotationView
     }
 
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 
