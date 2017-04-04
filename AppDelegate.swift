@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.statusBarStyle = .lightContent
         
         /*使用Apple導入的Appearance API設定導覽列的外觀、字體*/
-        UINavigationBar.appearance().barTintColor = UIColor(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
+        UINavigationBar.appearance().barTintColor = UIColor.red
+        //(red: 216.0/255.0, green: 74.0/255.0, blue: 32.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
         
         if let barFont = UIFont(name: "AvenirNextCondensed-DemiBold", size: 24.0){
