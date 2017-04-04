@@ -15,7 +15,7 @@ class ReviewViewController: UIViewController {
     
     /*圖片設定成與餐廳相同。從detailviewcontroller傳來*/
     @IBOutlet var containerViewImage: UIImageView!
-    var restaurant:RestaurantMO?
+    var restaurant:RestaurantMO?//coredata
     
     override func viewDidLoad() {
         super.viewDidLoad()

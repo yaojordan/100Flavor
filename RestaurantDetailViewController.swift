@@ -29,6 +29,10 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             default: break
             }
         }
+        //更新評價
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate){
+            appDelegate.saveContext()
+        }
         tableView.reloadData()
     }
     
@@ -43,7 +47,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 //    var restaurantLocation = ""
 //    var restaurantType = ""
     
-    var restaurant:RestaurantMO!
+    var restaurant:RestaurantMO!//coredata
     
     override func viewWillAppear(_ animated: Bool) {
         /*滑動效果，顯示導覽列*/

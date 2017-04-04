@@ -11,40 +11,47 @@ import CoreData
 
 class AddRestaurantController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var restaurant:RestaurantMO!
+    var restaurant:RestaurantMO!//coredata
     var isVisited = false
     
     @IBOutlet weak var photoImageView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var typeTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var yesButton: UIButton!
     @IBOutlet weak var noButton: UIButton!
     @IBAction func saveButtonTapped(sender: AnyObject)
     {
-        if nameTextField.text == "" || typeTextField.text == "" || locationTextField.text == ""
+        if nameTextField.text == ""
         {
-            let alertMessage = UIAlertController(title: "哎呀!", message: "有些欄位還沒填喔", preferredStyle: .alert)
+            let alertMessage = UIAlertController(title: "Oops!", message: "要填寫店名喔", preferredStyle: .alert)
             alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertMessage, animated: true, completion: nil)
-        }
-        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)//為了使用persistentContainer，須取得appdelegate的參照
-        {
-            restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
-            restaurant.name = nameTextField.text
-            restaurant.type = typeTextField.text
-            restaurant.location = locationTextField.text
-            restaurant.isVisited = isVisited
+        }else{
+        
+            //coredata
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)//為了使用persistentContainer，須取得appdelegate的參照
+            {
+                restaurant = RestaurantMO(context: appDelegate.persistentContainer.viewContext)
+                restaurant.name = nameTextField.text
+                restaurant.type = typeTextField.text
+                restaurant.location = locationTextField.text
+                restaurant.phone = phoneTextField.text
+                restaurant.isVisited = isVisited
             
-            if let restaurantImage = photoImageView.image{
-                if let imageData = UIImagePNGRepresentation(restaurantImage){
-                    restaurant.image = NSData(data: imageData)//image是NSData型態。取得圖片、轉換為NSData
+                if let restaurantImage = photoImageView.image{
+                    if let imageData = UIImagePNGRepresentation(restaurantImage){
+                        restaurant.image = NSData(data: imageData)//image是NSData型態。取得圖片、轉換為NSData
+                    }
                 }
+                appDelegate.saveContext()
             }
-            appDelegate.saveContext()
+            dismiss(animated: true, completion: nil)//解除
         }
-        //dismiss(animated: true, completion: nil)
     }
+    
+    
     @IBAction func toggleBeenHereButton(sender: UIButton){
         if sender == yesButton{
             isVisited = true
