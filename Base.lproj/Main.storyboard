@@ -15,13 +15,13 @@
         <!--100Flavor-->
         <scene sceneID="fhX-PE-bSi">
             <objects>
-                <tableViewController id="G9C-ZG-cpq" customClass="RestaurantTableViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="G9C-ZG-cpq" customClass="RestaurantTableViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="Umi-P4-OiS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="GkE-4b-hoN" customClass="RestaurantTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="80" id="GkE-4b-hoN" customClass="RestaurantTableViewCell" customModule="_00Flavor" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GkE-4b-hoN" id="ylP-YB-MOd">
@@ -29,10 +29,10 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8m8-GZ-Afe">
-                                            <rect key="frame" x="14" y="10.5" width="353.5" height="61.5"/>
+                                            <rect key="frame" x="14" y="10" width="353.5" height="55.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5IH-wK-XJg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="61.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="61.5" id="RCe-ba-hMr"/>
                                                         <constraint firstAttribute="width" constant="60" id="weI-bd-g14"/>
@@ -105,7 +105,7 @@
         <!--Restaurant Detail View Controller-->
         <scene sceneID="6qj-22-tdL">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="qEa-Rg-Fic" customClass="RestaurantDetailViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="qEa-Rg-Fic" customClass="RestaurantDetailViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fXG-90-2vN"/>
                         <viewControllerLayoutGuide type="bottom" id="Jw4-3H-8IJ"/>
@@ -126,7 +126,7 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </mapView>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="36" id="P5j-Iq-RNw" customClass="RestaurantDetailTableViewCell" customModule="FoodPin" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Cell" rowHeight="36" id="P5j-Iq-RNw" customClass="RestaurantDetailTableViewCell" customModule="_00Flavor" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P5j-Iq-RNw" id="0oa-Ih-FN6">
@@ -134,16 +134,16 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG2-rJ-ajW">
-                                                    <rect key="frame" x="15.5" y="7.5" width="351.5" height="20.5"/>
+                                                    <rect key="frame" x="15" y="7" width="352" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93s-2f-1H4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="117" height="20.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="117" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htR-WJ-3eo">
-                                                            <rect key="frame" x="117" y="0.0" width="234.5" height="20.5"/>
+                                                            <rect key="frame" x="117" y="0.0" width="235" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -210,7 +210,7 @@
         <!--Map View Controller-->
         <scene sceneID="kCc-W3-1by">
             <objects>
-                <viewController id="GuY-jU-gpb" customClass="MapViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GuY-jU-gpb" customClass="MapViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WsJ-00-xsu"/>
                         <viewControllerLayoutGuide type="bottom" id="MrW-e2-HAc"/>
@@ -219,7 +219,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CUb-BB-tBG">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CUb-BB-tBG">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
                         </subviews>
@@ -242,7 +242,7 @@
         <!--New Restaurant-->
         <scene sceneID="RgL-Pu-u0J">
             <objects>
-                <tableViewController id="XA9-jr-2qX" customClass="AddRestaurantController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="XA9-jr-2qX" customClass="AddRestaurantController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zql-FA-vXb">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -258,7 +258,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-je-xtN" userLabel="photoalbum">
-                                                    <rect key="frame" x="155" y="92" width="64" height="64"/>
+                                                    <rect key="frame" x="155.5" y="93" width="64" height="64"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -499,7 +499,7 @@
         <!--Review View Controller-->
         <scene sceneID="e42-Gx-EHU">
             <objects>
-                <viewController id="1di-rY-zdC" customClass="ReviewViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="1di-rY-zdC" customClass="ReviewViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Car-Yz-dEA"/>
                         <viewControllerLayoutGuide type="bottom" id="cri-xS-90i"/>
@@ -527,7 +527,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-Zb-D7n">
-                                        <rect key="frame" x="8" y="287.5" width="253" height="122.5"/>
+                                        <rect key="frame" x="8" y="287" width="253" height="122.5"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Irn-5f-Vn4">
                                                 <rect key="frame" x="0.0" y="0.0" width="253" height="37.5"/>
@@ -653,7 +653,7 @@
         <!--Walkthrough Page View Controller-->
         <scene sceneID="iho-mb-ts5">
             <objects>
-                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="yrq-rn-TeV" customClass="WalkthroughPageViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="WalkthroughController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="yrq-rn-TeV" customClass="WalkthroughPageViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab5-rC-2tJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="590" y="-488"/>
@@ -661,7 +661,7 @@
         <!--Walkthrough Content View Controller-->
         <scene sceneID="Ke0-t0-cY0">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughContentViewController" id="f1d-vF-l8n" customClass="WalkthroughContentViewController" customModule="FoodPin" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentViewController" id="f1d-vF-l8n" customClass="WalkthroughContentViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="e2W-QK-6XM"/>
                         <viewControllerLayoutGuide type="bottom" id="o10-a7-Nuj"/>
@@ -677,13 +677,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-Ij-U6j">
-                                <rect key="frame" x="37" y="112.5" width="300" height="232"/>
+                                <rect key="frame" x="37" y="112" width="300" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WTb-Ij-U6j" secondAttribute="height" multiplier="75:58" id="Hys-Ok-2EU"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin your favorite restaurants and create your own food guide" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-gL-w3j">
-                                <rect key="frame" x="46" y="367" width="282" height="95"/>
+                                <rect key="frame" x="46" y="366" width="282" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="GuF-jB-TVf"/>
                                     <constraint firstAttribute="width" constant="282" id="iCN-Vp-nVu"/>
@@ -736,10 +736,10 @@
         <!--Tab Bar Controller-->
         <scene sceneID="LSU-5U-4S6">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5Nh-6d-CNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Y5K-LC-it6" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="hup-eF-Fz0">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="selectedImageTintColor" red="0.99238989639999997" green="0.31568403140000001" blue="0.3458492869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -750,6 +750,7 @@
                         <segue destination="iPA-nF-3Eu" kind="relationship" relationship="viewControllers" id="Hee-MU-WrN"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Nh-6d-CNh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="589.60000000000002" y="225.33733133433284"/>
         </scene>

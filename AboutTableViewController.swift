@@ -12,8 +12,8 @@ import SafariServices
 class AboutTableViewController: UITableViewController {
 
     
-    var sectionTitles = ["Leave Feedback", "Follow Us"]
-    var sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Twitter", "Facebook"]]
+    var sectionTitles = ["Give US Feedback", "Follow Us"]
+    var sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Instagram", "Facebook"]]
     var links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile"]
 
     
@@ -52,7 +52,7 @@ class AboutTableViewController: UITableViewController {
     //呼叫網頁
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0://打開safari
+        case 0://打開safari的方法
             if indexPath.row == 0 {
                 if let url = URL(string: "https://facebook.com/appcodamobile"){
                     UIApplication.shared.open(url)
@@ -62,7 +62,7 @@ class AboutTableViewController: UITableViewController {
                     UIApplication.shared.open(url)
                 }
             }
-        case 1://打開內嵌safari
+        case 1://直接打開內嵌safari
             if let url = URL(string: links[indexPath.row]){
                 let safariController = SFSafariViewController(url: url)
                 present(safariController, animated:  true, completion: nil)

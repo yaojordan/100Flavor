@@ -29,7 +29,7 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertMessage, animated: true, completion: nil)
         }
-        
+        else{
             //coredata
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)//為了使用persistentContainer，須取得appdelegate的參照
             {
@@ -46,9 +46,10 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
                     }
                 }
                 appDelegate.saveContext()
+                dismiss(animated: true, completion: nil)//解除
             }
-            dismiss(animated: true, completion: nil)//解除
-        
+           
+        }
     }
     
     
