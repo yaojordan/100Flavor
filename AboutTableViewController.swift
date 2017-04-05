@@ -12,7 +12,7 @@ import SafariServices
 class AboutTableViewController: UITableViewController {
 
     
-    var sectionTitles = ["Give US Feedback", "Follow Us"]
+    var sectionTitles = ["Leave Feedback", "Follow Us"]
     var sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Instagram", "Facebook"]]
     var links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile"]
 

@@ -14,14 +14,22 @@ class DiscoveryTableViewController: UITableViewController {
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     var restaurants:[CKRecord] = []
+    var imageCache = NSCache<CKRecordID, NSURL>()//快取物件
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        spinner.hidesWhenStopped = true
+        /*下拉更新控制*/
+        refreshControl = UIRefreshControl()
+        refreshControl?.backgroundColor = UIColor.white
+        refreshControl?.tintColor = UIColor.gray
+        refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControlEvents.valueChanged)
+        
+        /*直接從storyboard設定*/
+        //spinner.hidesWhenStopped = true
         spinner.center = view.center
         tableView.addSubview(spinner)
-        spinner.stopAnimating()
+        spinner.startAnimating()
 
         fetchRecordsFromCloud()
         /*移除多餘的格線*/
@@ -30,10 +38,18 @@ class DiscoveryTableViewController: UITableViewController {
 
     func fetchRecordsFromCloud() {
         
+        
+        /*更新之前移除現有記錄*/
+        restaurants.removeAll()
+        tableView.reloadData()
+        
         let cloudContainer = CKContainer.default()
         let publicDatabase = cloudContainer.publicCloudDatabase
         let predicate = NSPredicate(value: true)
         let query = CKQuery(recordType: "Restaurant", predicate: predicate)
+        
+        query.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        //按建立時間排序
         
         //以query建立查詢操作
         let queryOperation = CKQueryOperation(query: query)
@@ -52,7 +68,15 @@ class DiscoveryTableViewController: UITableViewController {
             
             OperationQueue.main.addOperation {
                 self.spinner.stopAnimating()//spinner結束
+                
                 self.tableView.reloadData()
+                
+                /*檢查是否還在更新狀態*/
+                if let refreshControl = self.refreshControl{
+                    if refreshControl.isRefreshing{
+                        refreshControl.endRefreshing()
+                    }
+                }
             }
             
         }
@@ -77,6 +101,8 @@ class DiscoveryTableViewController: UITableViewController {
 //                }
 //            }
 //        })
+
+        
     }
 
     // MARK: - Table view data source
@@ -94,6 +120,7 @@ class DiscoveryTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
+        //設定Cell
         let restaurant = restaurants[indexPath.row]
         cell.textLabel?.text = restaurant.object(forKey: "name") as? String
         
