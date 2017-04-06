@@ -34,6 +34,10 @@ class DiscoveryTableViewController: UITableViewController {
         fetchRecordsFromCloud()
         /*移除多餘的格線*/
         tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
+        // Enable Self Sizing Cell 自適應，依照表格內容調整高度
+        tableView.estimatedRowHeight = 249.0
+        tableView.rowHeight = UITableViewAutomaticDimension
     }
 
     func fetchRecordsFromCloud() {
@@ -53,7 +57,7 @@ class DiscoveryTableViewController: UITableViewController {
         
         //以query建立查詢操作
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "image"]
+        queryOperation.desiredKeys = ["name", "type", "location", "image"]
         queryOperation.queuePriority = .veryHigh//執行順序
         queryOperation.resultsLimit = 50//回傳最大數量
         
@@ -118,17 +122,21 @@ class DiscoveryTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! RestaurantTableViewCell
 
         //設定Cell
         let restaurant = restaurants[indexPath.row]
-        cell.textLabel?.text = restaurant.object(forKey: "name") as? String
+        cell.nameLabel.text = restaurant.object(forKey: "name") as? String
+        cell.typeLabel.text = restaurant.object(forKey: "type") as? String
+        cell.locationLabel.text = restaurant.object(forKey: "location") as? String
+
         
         if let image = restaurant.object(forKey: "image"){
             let imageAsset = image as! CKAsset
             
             if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
-                cell.imageView?.image = UIImage(data: imageData)
+                cell.thumbnailImageView.image = UIImage(data: imageData)
             }
         }
 
