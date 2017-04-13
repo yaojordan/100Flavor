@@ -25,8 +25,8 @@ class DiscoveryTableViewController: UITableViewController {
         refreshControl?.tintColor = UIColor.gray
         refreshControl?.addTarget(self, action: #selector(fetchRecordsFromCloud), for: UIControlEvents.valueChanged)
         
-        /*直接從storyboard設定*/
-        //spinner.hidesWhenStopped = true
+        
+        //spinner.hidesWhenStopped = true/*直接從storyboard設定*/
         spinner.center = view.center
         tableView.addSubview(spinner)
         spinner.startAnimating()
@@ -131,13 +131,47 @@ class DiscoveryTableViewController: UITableViewController {
         cell.typeLabel.text = restaurant.object(forKey: "type") as? String
         cell.locationLabel.text = restaurant.object(forKey: "location") as? String
 
-        
-        if let image = restaurant.object(forKey: "image"){
-            let imageAsset = image as! CKAsset
-            
-            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
+        //檢查圖片是否在快取中
+        if let imageFileURL = imageCache.object(forKey: restaurant.recordID){
+            //從快取中取得圖片
+            print("get image from cache")
+            if let imageData = try? Data.init(contentsOf: imageFileURL as URL){
                 cell.thumbnailImageView.image = UIImage(data: imageData)
             }
+            
+        }
+        else
+        {
+            //在背景中從雲端取得圖片
+            let publicDatabase = CKContainer.default().publicCloudDatabase
+            let fetchRecordsImageOperation = CKFetchRecordsOperation(recordIDs:[restaurant.recordID])
+            fetchRecordsImageOperation.desiredKeys = ["image"]
+            fetchRecordsImageOperation.queuePriority = .veryHigh
+                
+            fetchRecordsImageOperation.perRecordCompletionBlock = { (record, recordID, error) -> Void in
+                if let error = error {
+                    print("取得餐廳圖片失敗： \(error.localizedDescription)")
+                    return
+                }
+                    
+                if let restaurantRecord = record
+                {
+                    OperationQueue.main.addOperation{
+                        if let image = restaurantRecord.object(forKey: "image"){
+                            let imageAsset = image as! CKAsset
+                                
+                            if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
+                                cell.thumbnailImageView.image = UIImage(data: imageData)
+                            }
+                                
+                            //加圖片URL至快取中
+                            self.imageCache.setObject(imageAsset.fileURL as NSURL, forKey: restaurant.recordID)
+                        }
+                    }
+                }
+            }
+            
+            publicDatabase.add(fetchRecordsImageOperation)
         }
 
         return cell
