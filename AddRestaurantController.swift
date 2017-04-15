@@ -1,6 +1,6 @@
 //
 //  AddRestaurantController.swift
-//  FoodPin
+//  100Flavor
 //
 //  Created by 姚宇鴻 on 2017/4/3.
 //  Copyright © 2017年 JordanYao. All rights reserved.
@@ -97,7 +97,7 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any])
     {
         
-        /*系統會傳遞包含所有圖片的info字典物件。
+        /*系統會傳遞包含所選圖片的info字典物件。
          UIImagePickerControllerOriginalImage，使用者所選圖片的鍵*/
         if let selectedImage = info[UIImagePickerControllerOriginalImage] as?
             UIImage{

@@ -1,6 +1,6 @@
 //
 //  MapViewController.swift
-//  FoodPin
+//  100Flavor
 //
 //  Created by 姚宇鴻 on 2017/4/3.
 //  Copyright © 2017年 JordanYao. All rights reserved.
@@ -60,7 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "MyPin"
-        /*確認annotation物件是否為MKUserLocation，是則回傳nil，地圖則繼續顯示user的當前位置*/
+        /*確認annotation物件是否為MKUserLocation，是則回傳nil，地圖繼續顯示user的當前位置*/
         if annotation.isKind(of: MKUserLocation.self){
             return nil
         }

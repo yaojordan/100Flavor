@@ -1,6 +1,6 @@
 //
 //  RestaurantDetailViewController.swift
-//  FoodPin
+//  100Flavor
 //
 //  Created by 姚宇鴻 on 2017/4/1.
 //  Copyright © 2017年 JordanYao. All rights reserved.
@@ -72,9 +72,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
                 //取得第一個地標
                 let placemark = placemarks[0]
                 
+                /*在地圖上加大頭針*/
                 //加上標註
                 let annotation = MKPointAnnotation()
-                
                 if let location = placemark.location{
                     //顯示標註
                     annotation.coordinate = location.coordinate
@@ -97,7 +97,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
 
     func showMap(){
         performSegue(withIdentifier: "showMap", sender: self)
-        /*showMap方法的實作*/
+        /*showMap方法的實作，觸發這個segue*/
     }
     
     /* 實作UITableViewDataSource協定中必要的方法來填入餐廳資訊，回傳5列餐廳資訊 */

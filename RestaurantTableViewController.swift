@@ -1,6 +1,6 @@
 //
 //  RestaurantTableViewController.swift
-//  FoodPin
+//  100Flavor
 //
 //  Created by 姚宇鴻 on 2017/4/1.
 //  Copyright © 2017年 JordanYao. All rights reserved.
@@ -45,6 +45,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     override func viewDidLoad() {
         super.viewDidLoad()
         
+
         /*加入searchbar*/
 //        searchController = UISearchController(searchResultsController: nil)
 //        tableView.tableHeaderView = searchController.searchBar
@@ -65,7 +66,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         /*Fetch*/
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)//依名稱排序
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let appdelegate = (UIApplication.shared.delegate as? AppDelegate){

@@ -1,6 +1,6 @@
 //
 //  RestaurantTableViewCell.swift
-//  FoodPin
+//  100Flavor
 //
 //  Created by 姚宇鴻 on 2017/4/1.
 //  Copyright © 2017年 JordanYao. All rights reserved.
