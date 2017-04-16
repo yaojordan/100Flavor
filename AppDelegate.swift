@@ -33,6 +33,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    /*3D touch快捷應用*/
+    //先宣告一個列舉，在case中定義快捷功能，並將完整的識別碼轉換成對應列舉的case
+    enum QuickAction:String{
+        case NewRestaurant = "NewRestaurant"
+        case OpenDiscover = "OpenDiscover"
+        
+        init?(fullIdentifier: String){
+            
+            guard let shortcutIdentifier = fullIdentifier.components(separatedBy: ".").last
+                else{
+                    return nil
+            }
+            
+            self.init(rawValue: shortcutIdentifier)
+        }
+    }
+    func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        completionHandler(handleQuickAction(shortcutItem: shortcutItem))
+    }
+    private func handleQuickAction(shortcutItem: UIApplicationShortcutItem) -> Bool
+    {
+        let shortcutType = shortcutItem.type
+        guard let shortcutIdentifier = QuickAction(fullIdentifier: shortcutType)
+            else{
+                return false
+        }
+        
+        guard let tabBarController = window?.rootViewController as? UITabBarController
+            else{
+                return false
+        }
+        
+        switch shortcutIdentifier {
+        case .NewRestaurant:
+            if let navController = tabBarController.viewControllers?[0]{
+                //從tabbar取得第一個，也就是Restaurant Table View，接著呼叫addRestaurant這個segue，讓他導向頁面
+                let restaurantTableViewController = navController.childViewControllers[0]
+                restaurantTableViewController.performSegue(withIdentifier: "addRestaurant", sender: restaurantTableViewController)
+            }else{
+                return false
+            }
+        case .OpenDiscover:
+            tabBarController.selectedIndex = 1 //Discover是tabbar的第二個選項
+        }
+        return true
+    }
+    /*3D touch快捷應用結束*/
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

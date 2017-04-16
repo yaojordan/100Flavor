@@ -142,9 +142,9 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
         let scledImage = UIImage(data: imageData, scale: scalingFactor)!
         
         //將圖片寫進本地端檔案作為暫時的使用
-        let imageFilePath = NSTemporaryDirectory() + restaurant.name!
+        let imageFilePath = NSTemporaryDirectory() + restaurant.name!//NSTemporaryDirectory取得暫時的路徑
         let imageFileURL = URL(fileURLWithPath: imageFilePath)
-        try? UIImageJPEGRepresentation(scledImage, 0.8)?.write(to: imageFileURL)
+        try? UIImageJPEGRepresentation(scledImage, 0.8)?.write(to: imageFileURL)//UIImageJPEGRepresentation壓縮圖片資料，write儲存
         
         //建立要上傳的圖片素材
         let imageAsset = CKAsset(fileURL: imageFileURL)

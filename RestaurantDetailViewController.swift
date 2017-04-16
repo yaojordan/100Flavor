@@ -25,7 +25,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             restaurant.isVisited = true
             
             switch rating {
-            case "great": restaurant.rating = "Absolutely love it, must try!"
+            case "great": restaurant.rating = "Absolutely love it!"
             case "good": restaurant.rating = "Pretty good."
             case "dislike": restaurant.rating = "I don't like it."
             default: break
@@ -124,7 +124,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = restaurant.phone
         case 4:
             cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, I've been here before \(restaurant.rating)" : "No"
+            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, " + restaurant.rating! : "No"
             /*結合評價的內容*/
         default:
             cell.fieldLabel.text = ""

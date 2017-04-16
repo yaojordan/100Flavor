@@ -57,7 +57,7 @@ class DiscoveryTableViewController: UITableViewController {
         
         //以query建立查詢操作
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "type", "location", "image"]
+        queryOperation.desiredKeys = ["name", "type", "location", "image"]//指定取得的欄位
         queryOperation.queuePriority = .veryHigh//執行順序
         queryOperation.resultsLimit = 50//回傳最大數量
         

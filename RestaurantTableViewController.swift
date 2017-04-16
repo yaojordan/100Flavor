@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
+class RestaurantTableViewController: UITableViewController, NSFetchedResultsControllerDelegate, UIViewControllerPreviewingDelegate {
     
     var restaurants:[RestaurantMO] = []//coredata託管物件，透過它來修改實體的內容
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
@@ -50,12 +50,16 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 //        searchController = UISearchController(searchResultsController: nil)
 //        tableView.tableHeaderView = searchController.searchBar
 //        
-//        searchController.searchResultsUpdater = self
+//        searchController.searchResultsUpdater = self//指定目前類別為搜尋結果更新器
 //        searchController.dimsBackgroundDuringPresentation = false
 //        
 //        searchController.searchBar.placeholder = "Search restaurants..."
 //        searchController.searchBar.tintColor = UIColor.white
-
+        
+        /*3D touch*/
+        if(traitCollection.forceTouchCapability == .available){
+            registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: view)
+        }
         
         /*啟用自適應cell，需搭配storyboard的auto layout*/
         tableView.estimatedRowHeight = 80.0
@@ -226,13 +230,45 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destinationController = segue.destination as! RestaurantDetailViewController
                 
+                //destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row]: restaurants[indexPath.row]
                 
                 destinationController.restaurant = restaurants[indexPath.row]
             }
         }
     }
     
-    
+    /*3D touch peek and pop實作*/
+    //觸控以CGPoint型態進行參數傳遞，推導出哪個cell被選取
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint)-> UIViewController?{
+        guard let indexPath = tableView.indexPathForRow(at: location)//以取得的點，回傳該點所在列的路徑
+            else{
+                return nil
+        }
+        
+        guard let cell = tableView.cellForRow(at: indexPath)
+            else{
+                return nil
+        }
+        
+        guard let restaurantDetailViewController = storyboard?.instantiateViewController(withIdentifier: "RestaurantDetailViewController") as? RestaurantDetailViewController//使用storyboard識別碼
+            else{
+                return nil
+        }
+        
+        let selectedRestaurant = restaurants[indexPath.row]
+        restaurantDetailViewController.restaurant = selectedRestaurant
+        restaurantDetailViewController.preferredContentSize = CGSize(width: 0.0, height: 450.0)//可以不設定，會自動以預設尺寸呈現
+        
+        previewingContext.sourceRect = cell.frame//預覽內容的cell要保持清楚
+        
+        return restaurantDetailViewController
+    }
+    //pop部分，提交一個viewcontroller，呼叫showViewController來呈現。
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController){
+        show(viewControllerToCommit, sender: self)
+    }
+    /*3D touch部分結束*/
+
     
     
     override func didReceiveMemoryWarning() {

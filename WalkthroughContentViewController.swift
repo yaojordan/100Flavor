@@ -49,6 +49,15 @@ class WalkthroughContentViewController: UIViewController {
         case 2:
             UserDefaults.standard.set(true, forKey: "hasViewedWalkthrough")
             dismiss(animated: true, completion: nil)
+            
+            /*3Dtouch快捷功能，要等使用者導覽後才能啟用，因此放在這裡*/
+            if traitCollection.forceTouchCapability == UIForceTouchCapability.available{
+                let bundleID = Bundle.main.bundleIdentifier
+                let shortcutItem1 = UIApplicationShortcutItem(type: "\(bundleID).NewRestaurant", localizedTitle: "New Restaurant", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(type: .add), userInfo: nil)
+                let shortcutItem2 = UIApplicationShortcutItem(type: "\(bundleID).OpenDiscober", localizedTitle: "Discover Restaurant", localizedSubtitle: nil, icon: UIApplicationShortcutIcon(templateImageName:"discover"), userInfo: nil)
+                UIApplication.shared.shortcutItems = [shortcutItem1, shortcutItem2]
+            }
+            /*forceTouchCapability，用來指示裝置是否能使用3D Touch*/
         default:
             break
         }

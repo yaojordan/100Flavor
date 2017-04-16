@@ -13,8 +13,8 @@ class AboutTableViewController: UITableViewController {
 
     
     var sectionTitles = ["Leave Feedback", "Follow Us"]
-    var sectionContent = [["Rate us on App Store", "Tell us your feedback"], ["Instagram", "Facebook"]]
-    var links = ["https://twitter.com/appcodamobile", "https://facebook.com/appcodamobile"]
+    var sectionContent = [["Rate on App Store"], ["Instagram", "Facebook", "Blog"]]
+    var links = ["https://www.instagram.com/100tastesintw2015/", "https://www.facebook.com/100tastesintw/", "https://100tastesintaiwan.wixsite.com/100tastesintw"]
 
     
     override func viewDidLoad() {
@@ -54,11 +54,7 @@ class AboutTableViewController: UITableViewController {
         switch indexPath.section {
         case 0://打開safari的方法
             if indexPath.row == 0 {
-                if let url = URL(string: "https://facebook.com/appcodamobile"){
-                    UIApplication.shared.open(url)
-                }
-            }else if indexPath.row == 1{
-                if let url = URL(string: "https://facebook.com/appcodamobile"){
+                if let url = URL(string: "https://www.apple.com/tw/itunes/charts/free-apps/"){
                     UIApplication.shared.open(url)
                 }
             }

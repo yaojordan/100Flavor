@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4763-11" id="UdM-1A-fxv">
+                        <imageView key="tableHeaderView" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="100_about" id="UdM-1A-fxv">
                             <rect key="frame" x="0.0" y="64" width="375" height="190"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -73,7 +73,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="4763-11" width="2560" height="1600"/>
+        <image name="100_about" width="1402" height="648"/>
         <image name="about" width="23" height="22"/>
     </resources>
 </document>
