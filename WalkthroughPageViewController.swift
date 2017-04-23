@@ -10,11 +10,11 @@ import UIKit
 
 class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerDataSource {
 
-    var pageHeadings = ["Personalize", "Locate", "Discover"]
-    var pageImages = ["foodpin-intro-1", "foodpin-intro-2", "foodpin-intro-3"]
-    var pageContent = ["Pin your favorite restaurants and create your own food guide",
-                       "Search and Locate your favorite restaurant on Maps",
-                       "Find restaurants pinned by your friends and other foodies around the world"]
+    var pageHeadings = ["個人化", "尋找位置", "探索"]
+    var pageImages = ["intro-1", "intro-2", "intro-3"]
+    var pageContent = ["記錄您所喜愛的餐廳，建立屬於自己的一百種味道。",
+                       "透過地圖功能找到您所喜愛的餐廳位置。",
+                       "看看其他人們都吃了些什麼？"]
     
     /*前一個*/
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
@@ -85,6 +85,9 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         }
     }
 
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

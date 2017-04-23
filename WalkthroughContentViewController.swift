@@ -14,9 +14,7 @@ class WalkthroughContentViewController: UIViewController {
     @IBOutlet weak var headingLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var contentImageView: UIImageView!
-    //自訂的頁籤
-    @IBOutlet weak var pageControl: UIPageControl!
-    
+    @IBOutlet weak var pageControl: UIPageControl!//自訂的頁籤
     @IBOutlet weak var forwardButton: UIButton!
     
     var index = 0//目前頁面的索引
@@ -33,9 +31,9 @@ class WalkthroughContentViewController: UIViewController {
         
         switch index {
         case 0...1:
-            forwardButton.setTitle("NEXT", for: .normal)
+            forwardButton.setTitle("下一步", for: .normal)
         case 2:
-            forwardButton.setTitle("DONE", for: .normal)
+            forwardButton.setTitle("完成", for: .normal)
         default:
             break
         }

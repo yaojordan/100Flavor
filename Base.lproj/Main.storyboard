@@ -12,7 +12,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--100Flavor-->
+        <!--100 Flavor-->
         <scene sceneID="fhX-PE-bSi">
             <objects>
                 <tableViewController id="G9C-ZG-cpq" customClass="RestaurantTableViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GkE-4b-hoN" id="ylP-YB-MOd">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="79"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8m8-GZ-Afe">
@@ -90,7 +90,7 @@
                             <outlet property="delegate" destination="G9C-ZG-cpq" id="OWN-qp-zHx"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="100Flavor" id="bm0-SU-hEF">
+                    <navigationItem key="navigationItem" title="100 Flavor" id="bm0-SU-hEF">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="nB2-js-wQH">
                             <connections>
                                 <segue destination="diG-xb-XLx" kind="presentation" identifier="addRestaurant" id="fQI-HL-pIT"/>
@@ -130,20 +130,20 @@
                                         <rect key="frame" x="0.0" y="328" width="375" height="36"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P5j-Iq-RNw" id="0oa-Ih-FN6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="35"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG2-rJ-ajW">
-                                                    <rect key="frame" x="15" y="7" width="352" height="22"/>
+                                                    <rect key="frame" x="15" y="7" width="352" height="21"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Field" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="93s-2f-1H4">
-                                                            <rect key="frame" x="0.0" y="0.0" width="117" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="117" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htR-WJ-3eo">
-                                                            <rect key="frame" x="117" y="0.0" width="235" height="22"/>
+                                                            <rect key="frame" x="117" y="0.0" width="235" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -239,7 +239,7 @@
             </objects>
             <point key="canvasLocation" x="3314" y="976"/>
         </scene>
-        <!--New Restaurant-->
+        <!--新增餐廳-->
         <scene sceneID="RgL-Pu-u0J">
             <objects>
                 <tableViewController id="XA9-jr-2qX" customClass="AddRestaurantController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
@@ -254,7 +254,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pKO-ln-GhX" id="iRd-Ko-VMV">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="photoalbum" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-je-xtN" userLabel="photoalbum">
@@ -272,16 +272,16 @@
                                         <rect key="frame" x="0.0" y="250" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vk3-J3-1ij" id="mIs-6Y-CWW">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VV2-kQ-toI">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="餐廳、店家、攤位名稱" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VV2-kQ-toI">
                                                     <rect key="frame" x="18" y="33" width="339" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NAME" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQZ-2v-VmP">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="店名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CQZ-2v-VmP">
                                                     <rect key="frame" x="18" y="8" width="61" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="61" id="2WT-6B-EPm"/>
@@ -306,20 +306,20 @@
                                         <rect key="frame" x="0.0" y="322" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fkt-Vd-rXD" id="mP4-7e-TzC">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TYPE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOi-AY-hiX">
-                                                    <rect key="frame" x="18" y="8" width="61" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="營業時間" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eOi-AY-hiX">
+                                                    <rect key="frame" x="18" y="8" width="85" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="I92-UH-sBx"/>
-                                                        <constraint firstAttribute="width" constant="61" id="VBq-Em-EEn"/>
+                                                        <constraint firstAttribute="width" constant="85" id="VBq-Em-EEn"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1rQ-OX-sls">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="ex: 10:30-21:00/週日公休" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1rQ-OX-sls">
                                                     <rect key="frame" x="18" y="33" width="339" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -340,10 +340,10 @@
                                         <rect key="frame" x="0.0" y="394" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rce-NV-KyU" id="Ad6-cZ-zpJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOCATION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eld-Af-TDz">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位址" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eld-Af-TDz">
                                                     <rect key="frame" x="18" y="8" width="103" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="103" id="aXP-xl-McJ"/>
@@ -353,7 +353,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pI-Av-wwK">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="店家地址" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8pI-Av-wwK">
                                                     <rect key="frame" x="18" y="33" width="339" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -374,10 +374,10 @@
                                         <rect key="frame" x="0.0" y="466" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rCF-FX-9KF" id="n3b-F5-mYE">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PHONE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V77-tj-1uH" userLabel="PHONE">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="電話" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V77-tj-1uH" userLabel="PHONE">
                                                     <rect key="frame" x="18" y="8" width="103" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="21" id="Fd8-1r-ks6"/>
@@ -387,7 +387,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Restaurant Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLn-Qv-pAc" userLabel="Restaurant Phone">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="店家聯絡電話" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iLn-Qv-pAc" userLabel="Restaurant Phone">
                                                     <rect key="frame" x="18" y="33" width="339" height="30"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -408,10 +408,10 @@
                                         <rect key="frame" x="0.0" y="538" width="375" height="72"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dSA-W7-ydg" id="GG3-xq-phx">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HAVE YOU BEEN HERE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sl-aN-NGa">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="去過了嗎？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Sl-aN-NGa">
                                                     <rect key="frame" x="19" y="8" width="212" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="212" id="2DU-Oq-gxx"/>
@@ -467,7 +467,7 @@
                             <outlet property="delegate" destination="XA9-jr-2qX" id="aQa-Tw-T0c"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Restaurant" id="kfk-bx-VoX">
+                    <navigationItem key="navigationItem" title="新增餐廳" id="kfk-bx-VoX">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="2Hh-wT-mbA">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -494,7 +494,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4LD-Bk-Nwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="ZQ4-xG-g21" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2388" y="976"/>
+            <point key="canvasLocation" x="2388" y="975.56221889055485"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="e42-Gx-EHU">
@@ -520,41 +520,41 @@
                                             <constraint firstAttribute="height" constant="200" id="WRC-7U-Kr9"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You've dined here. What do you think?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Ua-0PV">
-                                        <rect key="frame" x="15" y="208" width="239" height="64.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="覺得這家店如何呢？請給分！" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="bRA-Ua-0PV">
+                                        <rect key="frame" x="15" y="208" width="239" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="25"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="vV2-Zb-D7n">
-                                        <rect key="frame" x="8" y="287" width="253" height="122.5"/>
+                                        <rect key="frame" x="8" y="282.5" width="253" height="127"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Irn-5f-Vn4">
-                                                <rect key="frame" x="0.0" y="0.0" width="253" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="253" height="39"/>
                                                 <color key="backgroundColor" red="0.99238989639999997" green="0.31568403140000001" blue="0.3458492869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Absolutely Love it"/>
+                                                <state key="normal" title="超讚"/>
                                                 <connections>
                                                     <segue destination="bic-mh-Tbx" kind="unwind" identifier="great" unwindAction="ratingButtonTappedWithSegue:" id="ebj-cm-tG7"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cam-oh-Kac">
-                                                <rect key="frame" x="0.0" y="42.5" width="253" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="44" width="253" height="39"/>
                                                 <color key="backgroundColor" red="0.99238989639999997" green="0.31568403140000001" blue="0.3458492869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="Good"/>
+                                                <state key="normal" title="還算喜歡"/>
                                                 <connections>
                                                     <segue destination="bic-mh-Tbx" kind="unwind" identifier="good" unwindAction="ratingButtonTappedWithSegue:" id="Dzc-yC-7FZ"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mvF-hr-9Uq">
-                                                <rect key="frame" x="0.0" y="85" width="253" height="37.5"/>
+                                                <rect key="frame" x="0.0" y="88" width="253" height="39"/>
                                                 <color key="backgroundColor" red="0.99238989639999997" green="0.31568403140000001" blue="0.3458492869" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <state key="normal" title="I don't like it"/>
+                                                <state key="normal" title="不喜歡"/>
                                                 <connections>
                                                     <segue destination="bic-mh-Tbx" kind="unwind" identifier="dislike" unwindAction="ratingButtonTappedWithSegue:" id="SRp-r0-BiG"/>
                                                 </connections>
@@ -613,11 +613,11 @@
             </objects>
             <point key="canvasLocation" x="4160.8000000000002" y="224.4377811094453"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--最愛-->
         <scene sceneID="UMq-FS-04s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yWU-uK-LtC" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="doG-GK-6iY"/>
+                    <tabBarItem key="tabBarItem" title="最愛" image="heart-7" id="doG-GK-6iY"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hsL-dX-VpX">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -676,7 +676,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-Ij-U6j">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTb-Ij-U6j">
                                 <rect key="frame" x="37" y="112" width="300" height="232"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WTb-Ij-U6j" secondAttribute="height" multiplier="75:58" id="Hys-Ok-2EU"/>
@@ -779,6 +779,7 @@
         <image name="cafeloisl" width="480" height="480"/>
         <image name="check" width="28" height="28"/>
         <image name="cross" width="24" height="24"/>
+        <image name="heart-7" width="30" height="30"/>
         <image name="photoalbum" width="64" height="64"/>
     </resources>
 </document>

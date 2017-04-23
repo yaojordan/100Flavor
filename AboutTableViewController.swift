@@ -12,8 +12,8 @@ import SafariServices
 class AboutTableViewController: UITableViewController {
 
     
-    var sectionTitles = ["Leave Feedback", "Follow Us"]
-    var sectionContent = [["Rate on App Store"], ["Instagram", "Facebook", "Blog"]]
+    var sectionTitles = ["給我們意見", "追蹤我們"]
+    var sectionContent = [["在App Store上評分"], ["Instagram", "Facebook粉絲專頁", "Blog"]]
     var links = ["https://www.instagram.com/100tastesintw2015/", "https://www.facebook.com/100tastesintw/", "https://100tastesintaiwan.wixsite.com/100tastesintw"]
 
     

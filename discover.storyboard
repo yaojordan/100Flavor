@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Discover-->
+        <!--看看別人吃什麼-->
         <scene sceneID="1Pf-so-8R9">
             <objects>
                 <tableViewController id="Q7N-Um-ur3" customClass="DiscoveryTableViewController" customModule="_00Flavor" customModuleProvider="target" sceneMemberID="viewController">
@@ -35,21 +35,21 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="LhO-4e-PAw">
                                             <rect key="frame" x="8" y="173" width="359" height="63"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-wg-GDF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="26.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZ6-wg-GDF">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="29"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Type" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-uG-LBO">
-                                                    <rect key="frame" x="0.0" y="26.5" width="359" height="16"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" ambiguous="YES" text="Type" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MBd-uG-LBO">
+                                                    <rect key="frame" x="0.0" y="29" width="359" height="16"/>
                                                     <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHe-Rz-Ejw">
-                                                    <rect key="frame" x="0.0" y="42.5" width="359" height="20.5"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZHe-Rz-Ejw">
+                                                    <rect key="frame" x="0.0" y="45" width="359" height="18"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -78,7 +78,7 @@
                             <outlet property="delegate" destination="Q7N-Um-ur3" id="uEy-8u-ZSc"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Discover" id="3Sc-8P-Mew"/>
+                    <navigationItem key="navigationItem" title="看看別人吃什麼" id="3Sc-8P-Mew"/>
                     <connections>
                         <outlet property="spinner" destination="DRt-2U-CvO" id="lhR-iI-lh5"/>
                     </connections>
@@ -91,11 +91,11 @@
             </objects>
             <point key="canvasLocation" x="-743.20000000000005" y="224.4377811094453"/>
         </scene>
-        <!--Discover-->
+        <!--探索-->
         <scene sceneID="jUv-uU-pG6">
             <objects>
                 <navigationController id="sd1-ws-SQq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discover" image="discover" selectedImage="discover" id="oeF-6D-zUz"/>
+                    <tabBarItem key="tabBarItem" title="探索" image="discover" selectedImage="discover" id="oeF-6D-zUz"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics">
                         <color key="barTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </simulatedTabBarMetrics>

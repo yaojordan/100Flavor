@@ -68,16 +68,6 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
         }
     }
 
-
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     /*偵測觸控並載入照片庫，第一個cell被選取(row=0)即是開照片庫*/
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == 0
@@ -168,8 +158,14 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
     
     
     
-    
-    
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        noButton.backgroundColor = UIColor.lightGray
+        yesButton.backgroundColor = UIColor.lightGray
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
 }

@@ -10,11 +10,11 @@ import UIKit
 import CloudKit
 
 class DiscoveryTableViewController: UITableViewController {
-
     @IBOutlet var spinner: UIActivityIndicatorView!
     
     var restaurants:[CKRecord] = []
     var imageCache = NSCache<CKRecordID, NSURL>()//快取物件
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +57,7 @@ class DiscoveryTableViewController: UITableViewController {
         
         //以query建立查詢操作
         let queryOperation = CKQueryOperation(query: query)
-        queryOperation.desiredKeys = ["name", "type", "location", "image"]//指定取得的欄位
+        queryOperation.desiredKeys = ["name", "type", "location", "image", "phone"]//指定取得的欄位
         queryOperation.queuePriority = .veryHigh//執行順序
         queryOperation.resultsLimit = 50//回傳最大數量
         
@@ -66,7 +66,10 @@ class DiscoveryTableViewController: UITableViewController {
         }
         queryOperation.queryCompletionBlock = { (cursor, error) -> Void in
             if let error = error {
-                print("拿資料失敗幫QQ - \(error.localizedDescription)")
+                print("從Cloud取資料失敗 - \(error.localizedDescription)")
+                let alertMessage = UIAlertController(title: "Oops!", message: "請先登入iCloud才能取用資料。\n 設定 -> iCloud", preferredStyle: .alert)
+                alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.fetchRecordsFromCloud()}))
+                self.present(alertMessage, animated: true, completion: nil)
                 return
             }
             
@@ -131,6 +134,7 @@ class DiscoveryTableViewController: UITableViewController {
         cell.typeLabel.text = restaurant.object(forKey: "type") as? String
         cell.locationLabel.text = restaurant.object(forKey: "location") as? String
 
+
         //檢查圖片是否在快取中
         if let imageFileURL = imageCache.object(forKey: restaurant.recordID){
             //從快取中取得圖片
@@ -162,6 +166,7 @@ class DiscoveryTableViewController: UITableViewController {
                                 
                             if let imageData = try? Data.init(contentsOf: imageAsset.fileURL){
                                 cell.thumbnailImageView.image = UIImage(data: imageData)
+                                
                             }
                                 
                             //加圖片URL至快取中
@@ -176,11 +181,8 @@ class DiscoveryTableViewController: UITableViewController {
 
         return cell
     }
-    
 
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

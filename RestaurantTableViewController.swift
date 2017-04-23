@@ -13,14 +13,14 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     var restaurants:[RestaurantMO] = []//coredata託管物件，透過它來修改實體的內容
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
-    
-    /**/
-//    var searchController: UISearchController!
-//    var searchResults:[RestaurantMO] = []
-    /**/
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){
         //解除segue
     }
+    
+    /**/
+    //    var searchController: UISearchController!
+    //    var searchResults:[RestaurantMO] = []
+    /**/
     /*搜尋功能，filter過濾目前陣列。*/
     /*搜尋有問題，需要再檢查與調整*/
 //    func filterContent(for searchText: String){
@@ -56,7 +56,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
 //        searchController.searchBar.placeholder = "Search restaurants..."
 //        searchController.searchBar.tintColor = UIColor.white
         
-        /*3D touch*/
+        /*3D touch，先檢查是否支援，然後註冊預覽功能*/
         if(traitCollection.forceTouchCapability == .available){
             registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: view)
         }
@@ -92,7 +92,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        /*滑動時隱藏導覽列*/
+        /*滑動時隱藏導覽列。覺得效果不是很好所以不打算使用*/
         //navigationController?.hidesBarsOnSwipe = true
     }
     
@@ -196,8 +196,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         //社群分享按鈕
         /*包含自動載入的文字與圖片*/
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
-                                               title: "Share", handler:{(action, indexPath) -> Void in
-            let defaultText = "Just check in at " + self.restaurants[indexPath.row].name!
+                                               title: "分享", handler:{(action, indexPath) -> Void in
+            let defaultText = "在 " + self.restaurants[indexPath.row].name! + " 打卡"
             if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image as! Data)
             {
               let activityController = UIActivityViewController(activityItems: [defaultText, imageToShare], applicationActivities: nil)
@@ -207,7 +207,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         //刪除按鈕
         let deleteAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
-                                                title: "Delete", handler:{(action, indexPath) -> Void in
+                                                title: "刪除", handler:{(action, indexPath) -> Void in
             
             /*必須確實將資料從資料庫移除，否則下次開啟時還會出現*/
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)

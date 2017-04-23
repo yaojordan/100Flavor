@@ -25,9 +25,9 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             restaurant.isVisited = true
             
             switch rating {
-            case "great": restaurant.rating = "Absolutely love it!"
-            case "good": restaurant.rating = "Pretty good."
-            case "dislike": restaurant.rating = "I don't like it."
+            case "great": restaurant.rating = "覺得超讚！"
+            case "good": restaurant.rating = "還算喜歡。"
+            case "dislike": restaurant.rating = "不喜歡。"
             default: break
             }
         }
@@ -40,8 +40,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     
 
     override func viewWillAppear(_ animated: Bool) {
-        /*滑動效果，顯示導覽列*/
         super.viewWillAppear(animated)
+        /*滑動效果，顯示導覽列，不打算使用，所以設定false*/
         navigationController?.hidesBarsOnSwipe = false
         navigationController?.setNavigationBarHidden(false, animated: true)
     }
@@ -111,20 +111,20 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
         
         switch indexPath.row {
         case 0:
-            cell.fieldLabel.text = "Name"
+            cell.fieldLabel.text = "店名"
             cell.valueLabel.text = restaurant.name
         case 1:
-            cell.fieldLabel.text = "Type"
+            cell.fieldLabel.text = "營業時間"
             cell.valueLabel.text = restaurant.type
         case 2:
-            cell.fieldLabel.text = "Location"
+            cell.fieldLabel.text = "地址"
             cell.valueLabel.text = restaurant.location
         case 3:
-            cell.fieldLabel.text = "Phone"
+            cell.fieldLabel.text = "電話"
             cell.valueLabel.text = restaurant.phone
         case 4:
-            cell.fieldLabel.text = "Been here"
-            cell.valueLabel.text = (restaurant.isVisited) ? "Yes, " + restaurant.rating! : "No"
+            cell.fieldLabel.text = "去過了嗎？"
+            cell.valueLabel.text = (restaurant.isVisited) ? "去過了, \(restaurant.rating!)" : "還沒去過"
             /*結合評價的內容*/
         default:
             cell.fieldLabel.text = ""
