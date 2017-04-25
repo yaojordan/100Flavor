@@ -66,6 +66,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         switch shortcutIdentifier {
+            
+        case .OpenDiscover:
+            tabBarController.selectedIndex = 1 //Discover是tabbar的第二個選項
         case .NewRestaurant:
             if let navController = tabBarController.viewControllers?[0]{
                 //從tabbar取得第一個，也就是Restaurant Table View，接著呼叫addRestaurant這個segue，讓他導向頁面
@@ -74,8 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }else{
                 return false
             }
-        case .OpenDiscover:
-            tabBarController.selectedIndex = 1 //Discover是tabbar的第二個選項
+
         }
         return true
     }

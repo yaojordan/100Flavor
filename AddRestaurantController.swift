@@ -42,12 +42,12 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
                 restaurant.isVisited = isVisited
             
                 if let restaurantImage = photoImageView.image{
-                    if let imageData = UIImagePNGRepresentation(restaurantImage){
+                    if let imageData = UIImagePNGRepresentation(restaurantImage){//UIImagePNGRepresentation，以PNG格式取得圖片資料
                         restaurant.image = NSData(data: imageData)//image是NSData型態。取得圖片、轉換為NSData
                     }
                 }
                 appDelegate.saveContext()
-                saveRecordToCloud(restaurant: restaurant)//存到icloud
+                //saveRecordToCloud(restaurant: restaurant)//存到icloud
                 dismiss(animated: true, completion: nil)//解除
             }
            
@@ -113,7 +113,7 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
         dismiss(animated: true, completion: nil)//關閉圖片選擇器
     }
 
-    
+    /*
     /*資料傳到icloud*/
     func saveRecordToCloud(restaurant: RestaurantMO!) -> Void {
         
@@ -151,13 +151,8 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
         })
         
     }
-    
-    
-    
-    
-    
-    
-    
+    */
+
     override func viewDidLoad() {
         super.viewDidLoad()
         noButton.backgroundColor = UIColor.lightGray

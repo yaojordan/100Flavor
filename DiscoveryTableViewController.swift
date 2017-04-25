@@ -67,9 +67,9 @@ class DiscoveryTableViewController: UITableViewController {
         queryOperation.queryCompletionBlock = { (cursor, error) -> Void in
             if let error = error {
                 print("從Cloud取資料失敗 - \(error.localizedDescription)")
-                let alertMessage = UIAlertController(title: "Oops!", message: "請先登入iCloud才能取用資料。\n 設定 -> iCloud", preferredStyle: .alert)
-                alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: {(alert: UIAlertAction!) in self.fetchRecordsFromCloud()}))
-                self.present(alertMessage, animated: true, completion: nil)
+               /* let alertMessage = UIAlertController(title: "Oops!", message: "請先登入iCloud才能取用資料。\n 設定 -> iCloud", preferredStyle: .alert)
+                alertMessage.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))//{(alert: UIAlertAction!) in self.fetchRecordsFromCloud()}))
+                self.present(alertMessage, animated: true, completion: nil)*/
                 return
             }
             
@@ -90,39 +90,16 @@ class DiscoveryTableViewController: UITableViewController {
         
         //執行查詢
         publicDatabase.add(queryOperation)
-        
-//        publicDatabase.perform(query, inZoneWith: nil, completionHandler: {
-//            (results, error) -> Void in
-//            
-//            if error != nil {
-//                print("error to get data on cloud Q_Q")
-//                return
-//            }
-//            
-//            if let results = results {
-//                self.restaurants = results
-//                /*把表格重新載入的動作放到main thread，讓他即時顯示*/
-//                OperationQueue.main.addOperation {
-//                    self.tableView.reloadData()
-//
-//                }
-//            }
-//        })
-
-        
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 1//預設就是一個區塊
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-     
         return restaurants.count
     }
-
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

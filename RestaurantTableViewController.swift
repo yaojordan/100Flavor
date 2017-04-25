@@ -17,45 +17,10 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         //解除segue
     }
     
-    /**/
-    //    var searchController: UISearchController!
-    //    var searchResults:[RestaurantMO] = []
-    /**/
-    /*搜尋功能，filter過濾目前陣列。*/
-    /*搜尋有問題，需要再檢查與調整*/
-//    func filterContent(for searchText: String){
-//        searchResults = restaurants.filter({(restaurant) -> Bool in
-//            if let name = restaurant.name{
-//                let isMatch = name.localizedCaseInsensitiveContains(searchText)
-//                return isMatch
-//            }
-//            return false
-//        })
-//    }
-    
-    /*使用者選取搜尋列會呼叫此方法*/
-//    func updateSearchResults(for searchController: UISearchController) {
-//        if let searchText = searchController.searchBar.text{
-//            filterContent(for: searchText)//取得搜尋的文字，傳給filtercontent
-//            tableView.reloadData()
-//        }
-//    }
-    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
 
-        /*加入searchbar*/
-//        searchController = UISearchController(searchResultsController: nil)
-//        tableView.tableHeaderView = searchController.searchBar
-//        
-//        searchController.searchResultsUpdater = self//指定目前類別為搜尋結果更新器
-//        searchController.dimsBackgroundDuringPresentation = false
-//        
-//        searchController.searchBar.placeholder = "Search restaurants..."
-//        searchController.searchBar.tintColor = UIColor.white
-        
         /*3D touch，先檢查是否支援，然後註冊預覽功能*/
         if(traitCollection.forceTouchCapability == .available){
             registerForPreviewing(with: self as UIViewControllerPreviewingDelegate, sourceView: view)
@@ -70,11 +35,12 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         /*Fetch*/
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)//依名稱排序
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)//使用餐廳的name鍵，讓他依名稱排序
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let appdelegate = (UIApplication.shared.delegate as? AppDelegate){
             let context = appdelegate.persistentContainer.viewContext
+            
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
@@ -114,6 +80,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()//告訴tableview，要準備更新內容了
     }
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
         
         switch type{
@@ -136,6 +103,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             restaurants = fetchObjects as! [RestaurantMO]
         }
     }
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()//更新完成囉
     }
@@ -143,16 +111,11 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     // MARK: - Table view data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 1//預設就是一個區塊
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if searchController.isActive{//決定tableview應該顯示全部或是搜尋結果
-//            return searchResults.count
-//        }else{
-//            return restaurants.count
-//        }
-       return restaurants.count
+       return restaurants.count//區塊裡面顯示多少列？
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
@@ -164,8 +127,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         原先是UITableViewCell，但我們在這使用自訂的Cell，
         也就是RestaurantTableViewCell。
          */
-        
-//        let restaurant = (searchController.isActive) ? searchResults[indexPath.row]: restaurants[indexPath.row]
 
         //設定cell呈現的內容
         cell.nameLabel.text = restaurants[indexPath.row].name
@@ -182,14 +143,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         return cell
     }
-    
-//    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        if searchController.isActive{
-//            return false
-//        }else{
-//            return true
-//        }
-//    }
 
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]?{
         
@@ -213,8 +166,8 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate)
             {
                 let context = appDelegate.persistentContainer.viewContext
-                let restaurantToDelete = self.fetchResultController.object(at: indexPath)
-                context.delete(restaurantToDelete)
+                let restaurantToDelete = self.fetchResultController.object(at: indexPath)//用fetchResult取得所選的RestaurantMO物件
+                context.delete(restaurantToDelete)//呼叫Delete方法來刪除
                 appDelegate.saveContext()//儲存變更
             }
                                                     
@@ -227,15 +180,15 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     {
         /*檢查segue, 只對showRestaurantDetail這個segue執行*/
         if segue.identifier == "showRestaurantDetail"{
+            //取得所選列，indexPath應包含所選的cell
             if let indexPath = tableView.indexPathForSelectedRow{
                 let destinationController = segue.destination as! RestaurantDetailViewController
-                
-                //destinationController.restaurant = (searchController.isActive) ? searchResults[indexPath.row]: restaurants[indexPath.row]
-                
+
                 destinationController.restaurant = restaurants[indexPath.row]
             }
         }
     }
+    
     
     /*3D touch peek and pop實作*/
     //觸控以CGPoint型態進行參數傳遞，推導出哪個cell被選取
@@ -268,8 +221,6 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         show(viewControllerToCommit, sender: self)
     }
     /*3D touch部分結束*/
-
-    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

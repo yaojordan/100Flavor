@@ -124,7 +124,19 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
             cell.valueLabel.text = restaurant.phone
         case 4:
             cell.fieldLabel.text = "去過了嗎？"
-            cell.valueLabel.text = (restaurant.isVisited) ? "去過了, \(restaurant.rating!)" : "還沒去過"
+            if(restaurant.isVisited){
+                /*多加這個條件式，否則新增餐廳時選擇"YES"會出錯*/
+                if(restaurant.rating == nil){
+                cell.valueLabel.text = "去過了"
+                }
+                else{
+                    cell.valueLabel.text = "去過了, \(restaurant.rating!)"
+                }
+                
+            }else{
+                cell.valueLabel.text = "還沒去過"
+            }
+            //cell.valueLabel.text = (restaurant.isVisited) ? "去過了, \(restaurant.rating!)" : "還沒去過"
             /*結合評價的內容*/
         default:
             cell.fieldLabel.text = ""

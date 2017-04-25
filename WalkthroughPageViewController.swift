@@ -58,21 +58,6 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
                                completion: nil)
         }
     }
-    /*顯示頁面指示器。
-     presentationCount 回傳全部的圓點數
-     presentationIndex 回傳所選項目的index
-     
-    func presentationCount(for pageViewController: UIPageViewController) -> Int {
-        return pageHeadings.count
-    }
-    func presentationIndex(for pageViewController: UIPageViewController) -> Int {
-        if let pageContentViewController = storyboard?.instantiateViewController(withIdentifier: "WalkthroughContentViewController")
-            as? WalkthroughContentViewController{
-            return pageContentViewController.index
-        }
-        return 0
-    }
-    */
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,15 +70,12 @@ class WalkthroughPageViewController: UIPageViewController, UIPageViewControllerD
         }
     }
 
-    
-    
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

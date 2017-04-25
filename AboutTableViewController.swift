@@ -27,7 +27,7 @@ class AboutTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return sectionTitles.count//兩個區塊的tableview
+        return sectionTitles.count//兩個區塊的tableview，其實可以直接寫return 2
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -49,6 +49,8 @@ class AboutTableViewController: UITableViewController {
         
     }
     
+    
+    // MARK: - Table view delegate
     //呼叫網頁
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
