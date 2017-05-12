@@ -107,6 +107,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - Core Data stack
     
+    /*
+     NSPersistentContainer，用來存取資料的類別。
+     saveContext，對資料做變更時都要呼叫
+     
+     相較iOS 10之前的版本，NSPersistentContainer封裝了Core Data Stack，大量簡化內容
+    */
+    
     lazy var persistentContainer: NSPersistentContainer = {
         /*
          The persistent container for the application. This implementation

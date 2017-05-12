@@ -59,6 +59,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
         let identifier = "MyPin"
         /*確認annotation物件是否為MKUserLocation，是則回傳nil，地圖繼續顯示user的當前位置*/
         if annotation.isKind(of: MKUserLocation.self){

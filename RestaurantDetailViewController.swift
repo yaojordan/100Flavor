@@ -16,6 +16,8 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var restaurantImageView: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    
+    
     @IBAction func close(segue:UIStoryboardSegue){
         //這是用來定義解除segue的方法
     }
@@ -74,7 +76,7 @@ class RestaurantDetailViewController: UIViewController, UITableViewDataSource, U
                 
                 /*在地圖上加大頭針*/
                 //加上標註
-                let annotation = MKPointAnnotation()
+                let annotation = MKPointAnnotation()//將座標指定在標註物件內
                 if let location = placemark.location{
                     //顯示標註
                     annotation.coordinate = location.coordinate

@@ -13,9 +13,9 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     
     var restaurants:[RestaurantMO] = []//coredata託管物件，透過它來修改實體的內容
     var fetchResultController: NSFetchedResultsController<RestaurantMO>!
+    
     @IBAction func unwindToHomeScreen(segue:UIStoryboardSegue){
-        //解除segue
-    }
+    }//解除segue
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +35,25 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
         /*Fetch*/
         let fetchRequest: NSFetchRequest<RestaurantMO> = RestaurantMO.fetchRequest()
+        //透過RestaurantMO類別內建的fetchRequest()方法，他會以特定規則搜尋所選擇的Entity，並回傳NSFetchRequest物件
+        
+        
         let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)//使用餐廳的name鍵，讓他依名稱排序
         fetchRequest.sortDescriptors = [sortDescriptor]
         
         if let appdelegate = (UIApplication.shared.delegate as? AppDelegate){
             let context = appdelegate.persistentContainer.viewContext
             
+            //NSfetchResultController特別設計用來處例Coredata讀取請求後所回傳的結果，並提供資料給tableview。
+            //他會監聽MOcontext中Object的變動，然後把結果回傳給delegate
             fetchResultController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
             fetchResultController.delegate = self
             
             do{
-                try fetchResultController.performFetch()
+                
+                try fetchResultController.performFetch()//呼叫performFetch來執行讀取結果
+                
+                //完成後初始化fetchedObjects來取得RestaurantMO物件
                 if let fetchedObjects = fetchResultController.fetchedObjects{
                     restaurants = fetchedObjects
                 }
@@ -76,7 +84,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         
     }
 
-    /**/
+    /*實現NSFetchedResultsControllerDelegate協定*/
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()//告訴tableview，要準備更新內容了
     }
@@ -105,7 +113,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
     }
     
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
-        tableView.endUpdates()//更新完成囉
+        tableView.endUpdates()//更新完成
     }
     /**/
     
@@ -150,6 +158,7 @@ class RestaurantTableViewController: UITableViewController, NSFetchedResultsCont
         /*包含自動載入的文字與圖片*/
         let shareAction = UITableViewRowAction(style: UITableViewRowActionStyle.default,
                                                title: "分享", handler:{(action, indexPath) -> Void in
+                                                
             let defaultText = "在 " + self.restaurants[indexPath.row].name! + " 打卡"
             if let imageToShare = UIImage(data: self.restaurants[indexPath.row].image as! Data)
             {

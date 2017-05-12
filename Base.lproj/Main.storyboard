@@ -29,7 +29,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="8m8-GZ-Afe">
-                                            <rect key="frame" x="14" y="10" width="353.5" height="55.5"/>
+                                            <rect key="frame" x="14" y="10" width="353" height="55.5"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5IH-wK-XJg">
                                                     <rect key="frame" x="0.0" y="0.0" width="60" height="50"/>
@@ -44,7 +44,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="bjX-08-r6P">
-                                                    <rect key="frame" x="70" y="0.0" width="283.5" height="55.5"/>
+                                                    <rect key="frame" x="70" y="0.0" width="283" height="55.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCc-vf-hGd">
                                                             <rect key="frame" x="0.0" y="0.0" width="47" height="20.5"/>
@@ -683,7 +683,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pin your favorite restaurants and create your own food guide" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yIn-gL-w3j">
-                                <rect key="frame" x="46" y="366" width="282" height="95"/>
+                                <rect key="frame" x="46.5" y="366" width="282" height="95"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="95" id="GuF-jB-TVf"/>
                                     <constraint firstAttribute="width" constant="282" id="iCN-Vp-nVu"/>

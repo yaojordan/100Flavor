@@ -96,7 +96,9 @@ class AddRestaurantController: UITableViewController, UIImagePickerControllerDel
             photoImageView.clipsToBounds = true
         }
         
+        
         /*利用程式碼定義約束條件*/
+        //這個地方我實在覺得有點...
         let leadingConstraint = NSLayoutConstraint(item: photoImageView, attribute: NSLayoutAttribute.leading, relatedBy: NSLayoutRelation.equal, toItem: photoImageView.superview, attribute: NSLayoutAttribute.leading, multiplier: 1, constant: 0)
         leadingConstraint.isActive = true
         
